@@ -1,15 +1,17 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 8080",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.8.0",
     "@web3modal/ethereum": "^2.0.0-beta.1",
     "@web3modal/react": "^2.0.0-beta.1",
     "autoprefixer": "^10.4.13",
+    "daisyui": "^2.42.1",
     "ethers": "^5.7.2",
     "framer-motion": "^7.6.2",
     "next": "latest",

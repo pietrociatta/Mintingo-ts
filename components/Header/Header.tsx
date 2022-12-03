@@ -38,21 +38,18 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed  justify-between items-cxenter w-full bg-gradient-to-t px-[15px] from-gray-box to-gray-box flex h-[70px] shadow-xl ">
+    <div className="fixed  justify-between items-cxenter w-full bg-base-200 px-[15px]  flex h-[70px] shadow-xl ">
       <div className="flex items-center ">
         {sideOpen ? (
           <button
-            className="md:flex hidden "
+            className="md:flex  hidden bg-neutral   w-[33px] max-h-[33px] items-center  btn-ghost  p-1 border-gray-highlight border-[1px]  rounded-lg "
             onClick={() => setSideOpen(!sideOpen)}
           >
-            <FiChevronLeft
-              size={33}
-              className="bg-gray-box p-1  border-gray-highlight border-[2px]  rounded-lg"
-            />
+            <FiChevronLeft size={33} className="max-h-[33px] " />
           </button>
         ) : (
           <button
-            className="md:flex hidden "
+            className="md:flex hidden bg-neutral  w-[33px]  btn-ghost  p-1 border-gray-highlight border-[1px]  rounded-lg"
             onClick={() => setSideOpen(!sideOpen)}
           >
             <Image
@@ -60,7 +57,7 @@ const Header = () => {
               alt="hamburger"
               width={33}
               height={33}
-              className="bg-gray-box  p-1 border-gray-highlight border-[2px]  rounded-lg"
+              className=""
             />
           </button>
         )}
@@ -82,7 +79,7 @@ const Header = () => {
           name="search"
           id="search"
           autoComplete="off"
-          className="bg-gray-side py-3 px-5 w-[300px] shadow-[inset_0px_1px_4px_rgba(0,0,0,0.2)] rounded-full outline-none"
+          className="bg-neutral py-3 px-5 w-[300px] shadow-[inset_0px_1px_4px_rgba(0,0,0,0.2)] rounded-full outline-none"
           placeholder="Cerca una Collezione..."
           ref={searchInput}
           onChange={onChange}
@@ -98,12 +95,14 @@ const Header = () => {
       <div className="flex items-center  ">
         {account.isConnected && (
           <div className="flex items-center space-x-4 cursor-pointer ">
-            <Balance data={data} />
-            <Profile
-              account={account}
-              setProfileOpen={setProfileOpen}
-              profile={profileOpen}
-            />
+            <Balance data={data} account={account} />
+            <div className="hidden md:flex">
+              <Profile
+                account={account}
+                setProfileOpen={setProfileOpen}
+                profile={profileOpen}
+              />
+            </div>
           </div>
         )}
         {!account.isConnected && <Web3Button />}

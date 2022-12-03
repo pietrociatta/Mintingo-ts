@@ -9,7 +9,7 @@ export default function Home() {
   //   <Web3Button />
   return (
     <div
-      className={`transition-all delay-75 ${
+      className={`transition-all delay-75 bg-base-300 ${
         sideOpen ? 'w-[calc(100%-18rem)]  ml-auto' : 'w-full'
       }`}
     >
