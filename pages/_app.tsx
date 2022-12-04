@@ -7,15 +7,15 @@ import MobileMenu from '../components/Mobile/MobileMenu';
 function MyApp({ Component, pageProps }) {
   return (
     <MintingoProvider>
-      <div className="debug-screens flex flex-col text-white-text">
+      <div className="debug-screens  h-full  flex flex-col text-white-text">
         <Header />
-        <div className="mt-[70px] flex h-[100vh]">
+        <div className="mt-[70px] flex h-full">
           <div className="flex">
             <Sidebar />
           </div>
-          <div className="flex-grow flex  ">
-            <Component {...pageProps} />
-          </div>
+
+          <Component {...pageProps} />
+
           <div className="md:hidden fixed bottom-0 w-full">
             <MobileMenu />
           </div>

@@ -38,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed  justify-between items-cxenter w-full bg-base-200 px-[15px]  flex h-[70px] shadow-xl ">
+    <div className="fixed z-[50]  justify-between items-cxenter w-full bg-base-200 px-[15px]  flex h-[70px] shadow-xl ">
       <div className="flex items-center ">
         {sideOpen ? (
           <button

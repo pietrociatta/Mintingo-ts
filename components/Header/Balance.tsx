@@ -2,8 +2,10 @@ import Image from 'next/image';
 import React from 'react';
 import Usdt from '/public/assets/header/USDT.svg';
 import Icon2 from '/public/assets/header/wallet-icon.svg';
-import WalletModal from '../Main/WalletModal';
-import { FiCopy } from 'react-icons/fi';
+import WalletModal from '../Main/HeadingHome';
+import { FiCheck, FiCopy, FiLogOut } from 'react-icons/fi';
+
+import { useDisconnect } from '@web3modal/react';
 
 const Balance = ({ data, account }) => {
   const balance = Number(data?.formatted);
@@ -67,50 +69,55 @@ const Balance = ({ data, account }) => {
             </div>
             <div>
               <h3 className="font-bold text-xl mt-5">Your Balance</h3>
-              <div className="overflow-x-auto w-full">
+              <div className="overflow-x-hidden mt-5 w-full">
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>
-                        <label>
-                          <input type="checkbox" className="checkbox" />
-                        </label>
-                      </th>
                       <th>Currency</th>
                       <th>Balance</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th>
-                        <label>
-                          <input type="checkbox" className="checkbox" />
-                        </label>
-                      </th>
-                      <td>
-                        <div className="flex items-center space-x-3">
+                  <tbody className="">
+                    <tr className="">
+                      <td className="bg-base-200 border-base-100 border-t-[1px]">
+                        <div className="flex  items-center space-x-3">
                           <div className="avatar">
-                            <div className="mask mask-squircle w-12 h-12">
+                            <div className="mask mask-squircle w-11 h-11">
                               <img
-                                src="/tailwind-css-component-profile-2@56w.png"
+                                src="/assets/header/USDT.svg"
                                 alt="Avatar Tailwind CSS Component"
                               />
                             </div>
                           </div>
                           <div>
-                            <div className="font-bold">Hart Hagerty</div>
-                            <div className="text-sm opacity-50">
-                              United States
-                            </div>
+                            <div className="font-bold">USDT</div>
+                            <div className="text-sm opacity-50">Binance</div>
                           </div>
                         </div>
                       </td>
-                      <td>
-                        Zemlak, Daniel and Leannon
-                        <br />
-                        <span className="badge badge-ghost badge-sm">
-                          Desktop Support Technician
-                        </span>
+                      <td className="bg-base-200 text-xl border-base-100 border-t-[1px]">
+                        0,654
+                      </td>
+                    </tr>
+                    <tr className="">
+                      <td className="bg-base-200 border-base-100 border-t-[1px]">
+                        <div className="flex  items-center space-x-3">
+                          <div className="avatar">
+                            <div className="mask mask-squircle w-11 h-11">
+                              <img
+                                src="/assets/header/USDT.svg"
+                                alt="Avatar Tailwind CSS Component"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-bold">AMA</div>
+                            <div className="text-sm opacity-50">Binance</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="bg-base-200 text-xl border-base-100 border-t-[1px]">
+                        0,0
                       </td>
                     </tr>
                   </tbody>
@@ -118,9 +125,19 @@ const Balance = ({ data, account }) => {
               </div>
             </div>
 
-            <div className="modal-action">
-              <label htmlFor="my-modal-6" className="btn">
-                Yay!
+            <div className="flex mt-7 md:mb-0 mb-3 justify-between">
+              <label
+                onClick={useDisconnect()}
+                htmlFor="my-modal-6"
+                className="btn bg-red-500 border-none text-white"
+              >
+                LOGOUT <FiLogOut size={20} className="ml-2" />
+              </label>
+              <label
+                htmlFor="my-modal-6"
+                className="btn bg-base-200 border-none text-white"
+              >
+                CLOSE
               </label>
             </div>
           </div>
