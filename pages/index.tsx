@@ -15,7 +15,9 @@ export default function Home() {
   return (
     <div
       className={`transition-all  delay-75 h-full  bg-base-300 ${
-        sideOpen ? 'w-[calc(100%-18rem)]  ml-auto' : 'w-full max-w-7xl mx-auto'
+        sideOpen
+          ? 'md:w-[calc(100%-18rem)] w-full  ml-auto'
+          : 'w-full max-w-7xl mx-auto'
       }`}
     >
       <HeadingHome />

@@ -38,9 +38,9 @@ const Balance = ({ data, account }) => {
 
         {/* Put this part before </body> tag */}
       </div>
-      <div className="">
+      <div className="relative z-[30]">
         <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-        <div className="modal  md:bottom-0 bottom-[64px] modal-bottom  sm:modal-middle">
+        <div className="modal   md:bottom-0 bottom-[64px] modal-bottom  sm:modal-middle">
           <div className="modal-box bg-base-100">
             <label
               htmlFor="my-modal-6"

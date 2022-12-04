@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
 
           <Component {...pageProps} />
 
-          <div className="md:hidden fixed bottom-0 w-full">
+          <div className="md:hidden z-[90] fixed bottom-0 w-full">
             <MobileMenu />
           </div>
         </div>

@@ -15,7 +15,7 @@ const MobileMenu = () => {
   const { sideOpen, setSideOpen } = useContext(MintingoContext);
 
   return (
-    <div className="btm-nav relative z-[10]  bg-base-200">
+    <div className="btm-nav relative z-[999]  bg-base-200">
       <button>
         <RiProfileLine size={22} />
         <span className="btm-nav-label">Profile</span>
@@ -32,7 +32,13 @@ const MobileMenu = () => {
         <span className="btm-nav-label">Home</span>
       </button>
       <button onClick={() => setSideOpen(!sideOpen)}>
-        <Image src={Hamburger} width={20} height={20} alt="hamburger" />
+        <Image
+          src={Hamburger}
+          className=""
+          width={20}
+          height={20}
+          alt="hamburger"
+        />
         <span className="btm-nav-label">Menu</span>
       </button>
     </div>
