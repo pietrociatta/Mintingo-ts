@@ -1,5 +1,5 @@
 import React from 'react';
-import { shorten } from '../../utils/shorten';
+import { shorten } from '../../utils/Shorten';
 import { FiChevronDown } from 'react-icons/fi';
 
 const Profile = ({ account, setProfileOpen, profile }) => {
