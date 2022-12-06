@@ -22,16 +22,16 @@ const MobileMenu = () => {
         <span className="btm-nav-label">Profile</span>
       </button>
 
-      <button className="  relative ">
-        <Link href="/" className="">
+      <button className=" w-full relative ">
+        <Link href="/" className=" mx-auto">
           <Image
             src={LogoMintingoMobile}
             alt="logo"
-            className="-mt-8 z-[3] w-full relative "
+            className="-mt-8 z-[3] mx-auto w-full relative "
             width={45}
             height={375}
           />
-          <div className="bg-base-200 p-7 rounded-full -top-7 left-[37px]  absolute "></div>
+          <div className="bg-base-200 p-6 mx-auto right-auto left-auto rounded-full -top-6   absolute "></div>
           <span className="btm-nav-label">Home</span>
         </Link>
       </button>

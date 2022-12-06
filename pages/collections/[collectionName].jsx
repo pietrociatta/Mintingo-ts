@@ -1,25 +1,56 @@
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import CollectionsDb from '../../db/CollectionsDb.json';
 import { MintingoContext } from '../../context/MintingoContext';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { AiOutlineShopping, AiOutlineShoppingCart } from 'react-icons/ai';
+import {
+  AiOutlineMinus,
+  AiOutlinePlus,
+  AiOutlineShopping,
+  AiOutlineShoppingCart,
+} from 'react-icons/ai';
 import { GiTicket } from 'react-icons/gi';
 
-import { type } from 'os';
+import Lottie from 'lottie-react';
+import treasure from '../../lotties/treasure.json';
+import check from '../../lotties/check.json';
 
 const CollectionPage = () => {
   const { sideOpen, setSideOpen } = useContext(MintingoContext);
   const [collectionData, setCollectionData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [timer, setTimer] = useState();
+  const [ticketQuantity, setTicketQuantity] = useState(1);
+  const [fakeTransactionLoading, setFakeTransactionLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const router = useRouter();
   const props = router.query;
 
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [claimAnimation, setClaimAnimation] = useState(false);
+
+  const lottieRef = useRef();
+
+  // create a function that will be called when the user clicks the button to buy a ticket and simulate a transaction with a loading animation
+  const buyTicket = () => {
+    setFakeTransactionLoading(true);
+    setTimeout(() => {
+      setFakeTransactionLoading(false);
+      setSuccess(true);
+    }, 3000);
+  };
+
+  // useEffect(() => {
+  //   if (isPlaying && !claimAnimation) {
+  //     lottieRef.current.goToAndStop(2, true);
+  //   } else if (isPlaying && claimAnimation) {
+  //     lottieRef.current.play();
+  //   }
+  // }, [isPlaying, claimAnimation]);
+
   // use the collectionName parameter to dynamically generate the content of the page
   const collectionId = props.collectionName;
-  console.log(collectionId);
 
   var countDownDate = new Date('Dec 10, 2022 21:00:00').getTime();
 
@@ -149,15 +180,17 @@ const CollectionPage = () => {
             </div>
           </div>
           <div className="flex w-full md:w-max gap-2 mt-4">
-            <button className="btn btn-lg btn-primary px-10 items-center w-full md:w-max flex flex-col ">
-              <div className="flex gap-2 text-white text-lg items-center">
-                <GiTicket size={16} /> BUY TICKET
-              </div>
+            <label htmlFor="my-modal-3" className="w-full md:w-max">
+              <div className="btn btn-lg btn-primary px-10 items-center w-full md:w-max flex flex-col ">
+                <div className="flex gap-2 text-white text-lg items-center">
+                  <GiTicket size={16} /> BUY TICKET
+                </div>
 
-              <p className="text-sm normal-case font-normal">
-                1 Ticket = 10 USDT
-              </p>
-            </button>
+                <p className="text-sm normal-case font-normal">
+                  1 Ticket = 10 USDT
+                </p>
+              </div>
+            </label>
           </div>
         </div>
       </div>
@@ -245,6 +278,121 @@ const CollectionPage = () => {
         <p className="w-full text-center z-[0] md:text-3xl text-xl px-5  py-5 font-bold">
           CURRENT JACKPOT: 9,989 USDT
         </p>
+      </div>
+      <div className="relative z-[20]">
+        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+        <div className="modal   md:bottom-0 bottom-[64px] modal-bottom  sm:modal-middle">
+          <div className="modal-box   bg-base-100">
+            <label
+              htmlFor="my-modal-3"
+              className="btn text-xl btn-ghost absolute right-2 top-3"
+            >
+              ✕
+            </label>
+            <h3 className="font-bold text-xl">
+              {!success ? 'Buy Ticket' : 'Success'}
+            </h3>
+            {success && (
+              <div className="flex flex-col items-center justify-center gap-2">
+                <Lottie
+                  lottieRef={lottieRef}
+                  animationData={check}
+                  loop={false}
+                  style={{ width: 200, height: 200 }}
+                />
+
+                <p className="text-sm normal-case -mt-10 font-bold">
+                  You have successfully bought {ticketQuantity} Ticket.
+                </p>
+                <div className="divider my-1"></div>
+                <p className="text-sm text-center normal-case px-4 mb-1 mt-0 font-normal">
+                  You can buy more tickets by clicking on the button below.
+                </p>
+                <button
+                  onClick={() => {
+                    setSuccess(false);
+                  }}
+                  className="btn w-full btn-primary flex gap-2  text-white mb-5 font-bold "
+                >
+                  <AiOutlinePlus size={16} /> BUY MORE
+                </button>
+              </div>
+            )}
+            {!success && (
+              <div>
+                <p className="text-sm normal-case mt-2 font-normal">
+                  To join the lottery you must have at least 1 Ticket.
+                </p>
+                <div className="divider my-2"></div>
+                <div className="bg-base-200 p-3 rounded-xl">
+                  <h3 className="text-center pb-2 font-bold">
+                    SELECT QUANTITY:
+                  </h3>
+                  <div className="flex w-full  justify-between gap-2 mt-2">
+                    <button
+                      onClick={() => {
+                        if (ticketQuantity > 0)
+                          setTicketQuantity(ticketQuantity - 1);
+                      }}
+                      className="btn w-1/3 btn-ghost bg-base-100 font-bold "
+                    >
+                      <AiOutlineMinus size={16} />
+                    </button>
+                    <div className="flex gap-2 w-1/3 justify-center font-bold text-white text-lg items-center">
+                      <GiTicket size={22} /> {ticketQuantity}
+                    </div>
+                    <button
+                      onClick={() => setTicketQuantity(ticketQuantity + 1)}
+                      className="btn w-1/3 btn-ghost bg-base-100 font-bold "
+                    >
+                      <AiOutlinePlus size={16} />
+                    </button>
+                  </div>
+                </div>
+                {!fakeTransactionLoading ? (
+                  <button
+                    disabled={ticketQuantity < 1}
+                    onClick={buyTicket}
+                    className={`btn btn-lg mt-5 mb-5 btn-primary px-10 items-center w-full  flex flex-col  `}
+                  >
+                    <div className="flex gap-2 text-white text-lg items-center">
+                      <GiTicket size={16} /> BUY {ticketQuantity}{' '}
+                      {ticketQuantity > 1 ? 'TICKETS' : 'TICKET'}
+                    </div>
+
+                    <p className="text-sm normal-case font-normal">
+                      {ticketQuantity}{' '}
+                      {ticketQuantity > 1 ? 'Tickets' : 'Ticket'} ={' '}
+                      {ticketQuantity * 10} USDT
+                    </p>
+                  </button>
+                ) : (
+                  <button
+                    onclick={() => buyTicket()}
+                    className={`btn loading btn-lg mt-5 mb-5 btn-primary px-10 items-center w-full  flex   `}
+                  >
+                    <p>LOADING...</p>
+                  </button>
+                )}
+              </div>
+            )}
+            {/* {isPlaying && (
+              <Lottie
+                lottieRef={lottieRef}
+                animationData={treasure}
+                loop={false}
+                onComplete={() => {
+                  lottieRef.current.destroy();
+                  setIsPlaying(false);
+                  setClaimAnimation(false);
+                }}
+              />
+            )}
+            {!isPlaying && <p>SCEMO CHI LEGGE</p>} */}
+
+            {/* <button onClick={() => setClaimAnimation(true)}>CLAIM</button> */}
+          </div>
+        </div>
       </div>
     </div>
   );

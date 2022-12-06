@@ -10,9 +10,9 @@ const Collections = ({ collection }) => {
           <button className="btn btn-ghost btn-sm">See All</button>
         </div>
       </div>
-      <div className="flex overflow-x-scroll px-4 w-full no-scrollbar gap-6 mt-7">
+      <div className="flex overflow-x-scroll overflow-y-hidden px-4 w-full no-scrollbar gap-6 mt-7">
         {collection.collections.map((collection, index) => (
-          <div key={index} className="w-full">
+          <div key={index} className="w-full ">
             <CollectionCard collection={collection} />
           </div>
         ))}
