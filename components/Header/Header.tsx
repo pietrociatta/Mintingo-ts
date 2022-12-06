@@ -18,6 +18,7 @@ import { MintingoContext } from '../../context/MintingoContext';
 import Balance from './Balance';
 import Profile from './Profile';
 import { FiChevronLeft } from 'react-icons/fi';
+import Link from 'next/link';
 
 const Header = () => {
   const [profileOpen, setProfileOpen] = useState(false);
@@ -62,7 +63,9 @@ const Header = () => {
           </button>
         )}
         <div className="md:flex ml-4 hidden w-[200px]">
-          <Image src={LogoMintingo} alt="logo" width={1445} height={375} />
+          <Link href="/" className="">
+            <Image src={LogoMintingo} alt="logo" width={1445} height={375} />
+          </Link>
         </div>{' '}
         <div className="md:hidden flex w-[45px] ">
           <Image

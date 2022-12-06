@@ -1,13 +1,20 @@
-import React from 'react';
+import Link from 'next/link';
+import React, { cloneElement } from 'react';
 
 const CollectionCard = ({ collection }) => {
+  const collectionJson = collection.id;
+
   return (
-    <div className="bg-accent flex flex-col pb-4  px-3 rounded-xl text-white">
-      <div className="w-[200px] sm:w-full h-[250px] flex items-start flex-col justify-end ">
-        <h1 className="text-xl font-bold">{collection.title}</h1>
-        <p className="text-white text-sm">{collection.description}</p>
+    <Link key={collection.title} href={`/collections/${collectionJson}`}>
+      <div className="bg-accent btn btn-ghost  hover:bg-accent/70 md:w-full w-[200px] md:h-[350px] h-[300px] flex flex-col pb-4  px-3 rounded-xl text-white">
+        <div className="  h-[350px] flex items-start flex-col justify-end ">
+          <h1 className="text-xl font-bold">{collection.title}</h1>
+          <p className="text-white font-normal normal-case text-left text-sm">
+            {collection.description.slice(0, 40)}...
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

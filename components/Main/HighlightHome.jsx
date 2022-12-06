@@ -21,8 +21,8 @@ const HighlightHome = () => {
 
   return (
     <div className="flex md:flex-row flex-col  w-full gap-6 px-4 ">
-      {highlightCollections.map((highlight) => (
-        <Highlight data={highlight} />
+      {highlightCollections.map((highlight, index) => (
+        <Highlight key={index} data={highlight} />
       ))}
     </div>
   );

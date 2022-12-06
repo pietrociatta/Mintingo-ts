@@ -16,15 +16,17 @@ export default function Home() {
     <div
       className={`transition-all  delay-75 h-full  bg-base-300 ${
         sideOpen
-          ? 'md:w-[calc(100%-18rem)] w-full  ml-auto'
+          ? 'md:w-[calc(100%-18rem)] max-w-7xl w-full xxl:ml-0  ml-auto '
           : 'w-full max-w-7xl mx-auto'
       }`}
     >
-      <HeadingHome />
-      <HighlightHome />
-      <SubHighlightHome />
-      <SearchBarHome />
-      <CollectionsHome />
+      <div className="mx-auto max-w-7xl w-full">
+        <HeadingHome />
+        <HighlightHome />
+        <SubHighlightHome />
+        <SearchBarHome />
+        <CollectionsHome />
+      </div>
     </div>
   );
 }

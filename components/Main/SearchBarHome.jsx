@@ -49,8 +49,8 @@ const SearchBarHome = () => {
             openSearch ? 'hidden' : ''
           }`}
         >
-          {filters.map((filter) => (
-            <div className="flex w-max  items-center gap-2">
+          {filters.map((filter, index) => (
+            <div key={index} className="flex w-max  items-center gap-2">
               <div
                 onClick={() => {
                   setActiveFilter(filter.title);

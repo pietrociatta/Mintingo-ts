@@ -10,6 +10,7 @@ import {
 } from 'react-icons/ri';
 import { MintingoContext } from '../../context/MintingoContext';
 import LogoMintingoMobile from '/public/assets/header/logo_single.png';
+import Link from 'next/link';
 
 const MobileMenu = () => {
   const { sideOpen, setSideOpen } = useContext(MintingoContext);
@@ -20,17 +21,21 @@ const MobileMenu = () => {
         <RiProfileLine size={22} />
         <span className="btm-nav-label">Profile</span>
       </button>
-      <button className=" relative ">
-        <Image
-          src={LogoMintingoMobile}
-          alt="logo"
-          className="-mt-8 z-[2] "
-          width={45}
-          height={375}
-        />
-        <div className="bg-base-200 p-7 rounded-full -top-8 absolute z-1"></div>
-        <span className="btm-nav-label">Home</span>
+
+      <button className="  relative ">
+        <Link href="/" className="">
+          <Image
+            src={LogoMintingoMobile}
+            alt="logo"
+            className="-mt-8 z-[3] w-full relative "
+            width={45}
+            height={375}
+          />
+          <div className="bg-base-200 p-7 rounded-full -top-7 left-[37px]  absolute "></div>
+          <span className="btm-nav-label">Home</span>
+        </Link>
       </button>
+
       <button onClick={() => setSideOpen(!sideOpen)}>
         <Image
           src={Hamburger}

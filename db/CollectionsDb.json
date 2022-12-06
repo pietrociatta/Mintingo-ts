@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Hot New Collections",
+    "collections": [
+      {
+        "id": 1,
+        "title": "IPHONE 13",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      },
+      {
+        "id": 2,
+        "title": "LAMBORGHINI",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      },
+      {
+        "id": 3,
+        "title": "BITCOIN",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      },
+      {
+        "id": 4,
+        "title": "USDT",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      },
+      {
+        "id": 5,
+        "title": "VIP WHEEL",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      }
+    ]
+  },
+  {
+    "title": "Best Lottery Games",
+    "collections": [
+      {
+        "id": 6,
+        "title": "VIP WHEEL",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      },
+      {
+        "id": 7,
+        "title": "VIP WHEEL",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      },
+      {
+        "id": 8,
+        "title": "VIP WHEEL",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      },
+      {
+        "id": 9,
+        "title": "VIP WHEEL",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      },
+      {
+        "id": 10,
+        "title": "VIP WHEEL",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
+      }
+    ]
+  }
+]

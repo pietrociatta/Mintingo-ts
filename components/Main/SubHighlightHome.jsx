@@ -27,8 +27,8 @@ const SubHighlightHome = () => {
 
   return (
     <div className="flex justify-between  w-full mt-10 pb-10 sm:overflow-hidden overflow-x-scroll no-scrollbar gap-6  px-4 ">
-      {subHighlightCollections.map((highlight) => (
-        <div className="w-full">
+      {subHighlightCollections.map((highlight, index) => (
+        <div key={index} className="w-full">
           <SubHighlight data={highlight} />
         </div>
       ))}
