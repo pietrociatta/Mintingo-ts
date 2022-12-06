@@ -95,10 +95,26 @@ const CollectionPage = () => {
     >
       <div className="p-5 md:mt-32 mt-20 flex md:flex-row flex-col  justify-center  w-full ">
         <div className="md:min-w-[400px] relative sm:w-[400px]  sm:mx-auto aspect-square	 rounded-xl bg-base-200">
-          <p className=" bg-base-100 py-2  flex gap-2 items-center  px-2 absolute top-3 left-3  rounded-xl text-white text-base font-semibold">
+          <div className=" p-3">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full rounded-xl"
+            >
+              <source src="/video/bitcoin.webm" type="video/webm" />
+            </video>
+          </div>
+          <p className=" bg-base-200 py-2 mt-1  flex gap-2 items-center  px-2 ml-1 absolute top-0 left-0  rounded-xl text-white text-sm font-semibold">
             TIME LEFT:
-            <span className="bg-accent text-white p-1 rounded-xl px-2">
+            <span className="bg-accent text-white p-1 rounded-lg px-2">
               {timer}
+            </span>
+          </p>
+          <p className=" bg-base-200 py-2 mb-1  flex gap-2 items-center  px-2 mr-1 absolute bottom-0 right-0  rounded-xl text-white text-sm font-semibold">
+            <span className="bg-green-500 text-white p-1 rounded-lg px-2">
+              OPEN
             </span>
           </p>
         </div>
