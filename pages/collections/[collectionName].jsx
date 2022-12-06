@@ -103,7 +103,7 @@ const CollectionPage = () => {
               playsInline
               className="w-full rounded-xl"
             >
-              <source src="/video/bitcoin.webm" type="video/webm" />
+              <source src="/video/bitcoin.mp4" type="video/mp4" />
             </video>
           </div>
           <p className=" bg-base-200 py-2 mt-1  flex gap-2 items-center  px-2 ml-1 absolute top-0 left-0  rounded-xl text-white text-sm font-semibold">
