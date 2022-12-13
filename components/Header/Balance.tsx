@@ -6,9 +6,11 @@ import WalletModal from '../Main/HeadingHome';
 import { FiCheck, FiCopy, FiLogOut } from 'react-icons/fi';
 
 import { useDisconnect } from '@web3modal/react';
+import { MintingoContext } from '../../context/MintingoContext';
 
 const Balance = ({ data, account }) => {
   const balance = Number(data?.formatted);
+  const { fakeBalance } = React.useContext(MintingoContext);
 
   return (
     <div className="">
@@ -17,7 +19,7 @@ const Balance = ({ data, account }) => {
           <span className="absolute left-3">
             <Image src={Usdt} height={20} width={20} alt="usdt" />
           </span>
-          <span className="ml-6 mr-4">{balance.toFixed(2)}</span>
+          <span className="ml-6 mr-4">{fakeBalance.toFixed(2)}</span>
         </div>
 
         <button className="flex w-max -ml-5 z-10  ">

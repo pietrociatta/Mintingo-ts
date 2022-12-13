@@ -17,7 +17,13 @@ import treasure from '../../lotties/treasure.json';
 import check from '../../lotties/check.json';
 
 const CollectionPage = () => {
-  const { sideOpen, setSideOpen } = useContext(MintingoContext);
+  const {
+    sideOpen,
+    setSideOpen,
+    handleProfileCollection,
+    counter,
+    decreasefakeBalance,
+  } = useContext(MintingoContext);
   const [collectionData, setCollectionData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [timer, setTimer] = useState();
@@ -36,8 +42,14 @@ const CollectionPage = () => {
   const buyTicket = () => {
     setFakeTransactionLoading(true);
     setTimeout(() => {
+      decreasefakeBalance(ticketQuantity);
       setFakeTransactionLoading(false);
       setSuccess(true);
+      handleProfileCollection({
+        collectionId: collectionData.id,
+        collectionName: collectionData.name,
+        quantity: ticketQuantity,
+      });
     }, 3000);
   };
 
@@ -114,7 +126,44 @@ const CollectionPage = () => {
       const result = findObjectById(CollectionsDb, Number(collectionId));
       setCollectionData(result);
     }
-  }, [collectionId]);
+  }, []);
+
+  useEffect(() => {
+    function findObjectById(json, id) {
+      // base case: if the json is an object and has an id property with the
+      // specified value, then we've found the object we're looking for, so
+      // return it
+      if (json.id === id) {
+        return json;
+      }
+
+      // otherwise, check if json is an object or an array
+      let result = null;
+      if (json instanceof Object) {
+        // if json is an object, recursively search its properties
+        Object.keys(json).forEach((key) => {
+          // if we've already found the object, no need to keep searching
+          if (!result) {
+            result = findObjectById(json[key], id);
+          }
+        });
+      } else if (Array.isArray(json)) {
+        // if json is an array, recursively search its elements
+        json.forEach((element) => {
+          // if we've already found the object, no need to keep searching
+          if (!result) {
+            result = findObjectById(element, id);
+          }
+        });
+      }
+      return result;
+    }
+
+    if (collectionId) {
+      const result = findObjectById(CollectionsDb, Number(collectionId));
+      setCollectionData(result);
+    }
+  }, [counter]);
 
   return (
     <div
@@ -127,15 +176,20 @@ const CollectionPage = () => {
       <div className="p-5 md:mt-32 mt-20 flex md:flex-row flex-col  justify-center  w-full ">
         <div className="md:min-w-[400px] relative sm:w-[400px]  sm:mx-auto aspect-square	 rounded-xl bg-base-200">
           <div className=" p-3">
-            <video
+            <img
+              className="w-full h-[350px] object-cover object-center rounded-xl"
+              src={collectionData.image}
+            ></img>
+            {/* <video
               autoPlay
               muted
               loop
+              preload="none"
               playsInline
               className="w-full rounded-xl"
             >
               <source src="/video/bitcoin.mp4" type="video/mp4" />
-            </video>
+            </video> */}
           </div>
           <p className=" bg-base-200 py-2 mt-1  flex gap-2 items-center  px-2 ml-1 absolute top-0 left-0  rounded-xl text-white text-sm font-semibold">
             TIME LEFT:
@@ -203,7 +257,6 @@ const CollectionPage = () => {
             <table className="table table-zebra w-full">
               <thead>
                 <tr>
-                  <th></th>
                   <th>ADDRESS</th>
                   <th>QUANTITY</th>
                   <th>TXHASH</th>
@@ -211,24 +264,21 @@ const CollectionPage = () => {
               </thead>
               <tbody>
                 <tr>
-                  <th>1</th>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
+                  <td>0x34...h567</td>
+                  <td>23</td>
+                  <td>0x2354...</td>
                 </tr>
 
                 <tr>
-                  <th>2</th>
-                  <td>Hart Hagerty</td>
-                  <td>Desktop Support Technician</td>
-                  <td>Purple</td>
+                  <td>0x34...h567</td>
+                  <td>23</td>
+                  <td>0x2354...</td>
                 </tr>
 
                 <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>Tax Accountant</td>
-                  <td>Red</td>
+                  <td>0x34...h567</td>
+                  <td>23</td>
+                  <td>0x2354...</td>
                 </tr>
               </tbody>
             </table>
@@ -239,35 +289,49 @@ const CollectionPage = () => {
             PRIZE
           </p>
           <div className="overflow-x-auto  px-4">
-            <table className="table table-zebra w-full">
+            <table className="table text-center table-zebra w-full">
               <thead>
                 <tr>
                   <th></th>
-                  <th>ADDRESS</th>
-                  <th>QUANTITY</th>
-                  <th>TXHASH</th>
+                  <th>AMOUNT</th>
+                  <th>WINNING %</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th>1</th>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
+                  <th>
+                    {' '}
+                    <img
+                      className="w-full h-[75px] bg-violet-600 p-2 object-cover object-center rounded-xl"
+                      src={collectionData.image}
+                    ></img>
+                  </th>
+                  <td>200</td>
+                  <td>1%</td>
                 </tr>
 
                 <tr>
-                  <th>2</th>
-                  <td>Hart Hagerty</td>
-                  <td>Desktop Support Technician</td>
-                  <td>Purple</td>
+                  <th>
+                    {' '}
+                    <img
+                      className="w-full h-[75px] bg-yellow-600 p-2 object-cover object-center rounded-xl"
+                      src={collectionData.image}
+                    ></img>
+                  </th>
+                  <td>500</td>
+                  <td>20%</td>
                 </tr>
 
                 <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>Tax Accountant</td>
-                  <td>Red</td>
+                  <th>
+                    {' '}
+                    <img
+                      className="w-full h-[75px] bg-gray-500 p-2 object-cover object-center rounded-xl"
+                      src={collectionData.image}
+                    ></img>
+                  </th>
+                  <td>2000</td>
+                  <td>70%</td>
                 </tr>
               </tbody>
             </table>
@@ -293,7 +357,7 @@ const CollectionPage = () => {
               {!success ? 'Buy Ticket' : 'Success'}
             </h3>
             {success && (
-              <div className="flex flex-col items-center justify-center gap-2">
+              <div className="flex flex-col -mt-8 items-center justify-center gap-2">
                 <Lottie
                   lottieRef={lottieRef}
                   animationData={check}
@@ -312,7 +376,7 @@ const CollectionPage = () => {
                   onClick={() => {
                     setSuccess(false);
                   }}
-                  className="btn w-full btn-primary flex gap-2  text-white mb-5 font-bold "
+                  className="btn w-full btn-primary flex gap-2  text-white mb-5 md:mb-0 font-bold "
                 >
                   <AiOutlinePlus size={16} /> BUY MORE
                 </button>
@@ -353,7 +417,7 @@ const CollectionPage = () => {
                   <button
                     disabled={ticketQuantity < 1}
                     onClick={buyTicket}
-                    className={`btn btn-lg mt-5 mb-5 btn-primary px-10 items-center w-full  flex flex-col  `}
+                    className={`btn btn-lg mt-5 mb-5 md:mb-0 btn-primary px-10 items-center w-full  flex flex-col  `}
                   >
                     <div className="flex gap-2 text-white text-lg items-center">
                       <GiTicket size={16} /> BUY {ticketQuantity}{' '}
@@ -369,7 +433,7 @@ const CollectionPage = () => {
                 ) : (
                   <button
                     onclick={() => buyTicket()}
-                    className={`btn loading btn-lg mt-5 mb-5 btn-primary px-10 items-center w-full  flex   `}
+                    className={`btn loading btn-lg mt-5 mb-5 md:mb-0 btn-primary px-10 items-center w-full  flex   `}
                   >
                     <p>LOADING...</p>
                   </button>

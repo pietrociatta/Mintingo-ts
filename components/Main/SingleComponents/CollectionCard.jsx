@@ -6,8 +6,12 @@ const CollectionCard = ({ collection }) => {
 
   return (
     <Link key={collection.title} href={`/collections/${collectionJson}`}>
-      <div className="bg-accent btn btn-ghost  hover:bg-accent/70 md:w-full w-[200px] md:h-[350px] h-[300px] flex flex-col pb-4  px-3 rounded-xl text-white">
+      <div className="bg-neutral btn btn-ghost  hover:bg-accent/70 md:w-full w-[200px] md:h-[350px] h-[300px] flex flex-col pb-4  px-3 rounded-xl text-white">
         <div className="  h-[350px] flex items-start flex-col justify-end ">
+          <img
+            className="w-full h-[3500px] object-cover object-center rounded-xl"
+            src={collection.image}
+          ></img>
           <h1 className="text-xl font-bold">{collection.title}</h1>
           <p className="text-white font-normal normal-case text-left text-sm">
             {collection.description.slice(0, 40)}...

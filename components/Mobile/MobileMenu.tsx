@@ -17,9 +17,11 @@ const MobileMenu = () => {
 
   return (
     <div className="btm-nav relative z-[999]  bg-base-200">
-      <button>
-        <RiProfileLine size={22} />
-        <span className="btm-nav-label">Profile</span>
+      <button className="w-full ">
+        <Link href="/profile" className="mx-auto flex items-center flex-col ">
+          <RiProfileLine size={22} />
+          <span className="btm-nav-label">Profile</span>
+        </Link>
       </button>
 
       <button className=" w-full relative ">

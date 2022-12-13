@@ -4,26 +4,31 @@
     "collections": [
       {
         "id": 1,
+        "image": "/assets/foto1.png",
         "title": "IPHONE 13",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
       },
       {
         "id": 2,
+        "image": "/assets/foto2.png",
         "title": "LAMBORGHINI",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
       },
       {
         "id": 3,
+        "image": "/assets/foto3.png",
         "title": "BITCOIN",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
       },
       {
         "id": 4,
+        "image": "/assets/foto4.png",
         "title": "USDT",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
       },
       {
         "id": 5,
+        "image": "/assets/foto5.png",
         "title": "VIP WHEEL",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quisque id diam vel quam elementum pulvinar etiam non."
       }

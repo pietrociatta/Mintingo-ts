@@ -6,6 +6,8 @@ export const MintingoContext = createContext();
 
 export const MintingoProvider = ({ children }) => {
   const { account } = useAccount();
+  const [counter, setCounter] = useState(0);
+  const [fakeBalance, setFakeBalance] = useState(100);
   const config = {
     theme: 'dark',
     accentColor: 'default',
@@ -23,10 +25,42 @@ export const MintingoProvider = ({ children }) => {
   };
 
   const [sideOpen, setSideOpen] = useState(false);
+  const [profileCollection, setProfileCollection] = useState([]);
+
+  const handleProfileCollection = (data) => {
+    setProfileCollection([...profileCollection, data]);
+  };
+
+  const refreshData = () => {
+    setCounter(counter + 1);
+  };
+
+  const increasefakeBalance = () => {
+    setFakeBalance(fakeBalance + 40);
+  };
+
+  const decreasefakeBalance = (ticket) => {
+    const amount = ticket * 10;
+    setFakeBalance(fakeBalance - amount);
+  };
 
   return (
     <MintingoContext.Provider
-      value={{ config, account, sideOpen, setSideOpen }}
+      value={{
+        config,
+        account,
+        sideOpen,
+        setSideOpen,
+        setProfileCollection,
+        profileCollection,
+        handleProfileCollection,
+        setCounter,
+        counter,
+        refreshData,
+        increasefakeBalance,
+        decreasefakeBalance,
+        fakeBalance,
+      }}
     >
       {children}
       <Web3Modal config={config} />
